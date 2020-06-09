@@ -1,0 +1,16 @@
+<ul>
+  <% @tasks.each do |task| %>
+    <%if task.completed == true %>
+      <p>True</p>
+    <%else%>
+      <p>False</p>
+    <%end%>
+    <label for="tasks"><%= link_to "#{task.title}", task_path(task[:id]) %></label><br>
+    <%= link_to "Delete #{task.title}",
+            task_path(task),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+  <% end %>
+</ul>
+
+<%= link_to "New task", "/tasks/new" %>
